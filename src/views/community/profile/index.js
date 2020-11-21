@@ -1,47 +1,61 @@
-import React from 'react';
-import {
-  Box,
-  Container,
-  Grid,
-  makeStyles
-} from '@material-ui/core';
-import Page from 'src/components/Page';
-import ProfileDetails from './ProfileDetails';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  },
-  productCard: {
-    height: '100%'
-  }
-}));
-
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from 'src/redux/actions/User';
 const Profile = () => {
-  const classes = useStyles();
+    const [values, setValues] = useState(useSelector(state => state.User));
+    const dispatch = useDispatch();
 
-  return (
-    <Page
-      className={classes.root}
-      title="Profile"
-    >
-      <Container maxWidth={false}>
-        <Box mt={3}>
-          <Grid
-            container
-            spacing={3}
-          >
-              <Grid item xs={12}>
-                <ProfileDetails />
-              </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Page>
-  );
-};
+    const handleChange = (event) => {
+        setValues({
+          ...values,
+          [event.target.name]: event.target.value
+        });
+    };
 
-export default Profile;
+    const handleSubmit = () => {
+        dispatch(updateProfile(values));
+    }
+
+    return (
+        <>
+            <div className="page-title">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
+                        <div className="d-inline-block">
+                            <h5 className="h4 d-inline-block font-weight-400 mb-0 text-white">Profile</h5>
+                        </div>
+                        <div className="align-items-center ml-4 d-inline-flex">
+                            <span className="text-sm opacity-7 text-white">We'll never share your information with anyone else.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <div className="card hover-shadow-lg">
+                        <div className="card-body overflow-hidden">
+                            <div className="form-group">
+                                <label>Name</label>
+                                <input value={values.name} name="name" onChange={handleChange} type="text" className="form-control" required/>
+                            </div>
+                            <div className="form-group">
+                                <label>Facebook Profile</label>
+                                <input value={values.facebook_profile} name="facebook_profile" onChange={handleChange} type="text" className="form-control" required/>
+                            </div>
+                        </div>
+                        <div className="card-footer">
+                            <div className="actions d-flex justify-content-center px-4">
+                                <button onClick={handleSubmit} className="action-item w-100">
+                                    <i className="fas fa-edit"></i>
+                                    &nbsp;Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default Profile

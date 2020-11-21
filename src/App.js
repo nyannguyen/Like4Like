@@ -14,10 +14,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
       {routing}
-    </ThemeProvider>
     </Provider>
   );
 };

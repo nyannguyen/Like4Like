@@ -9,13 +9,27 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700" />
   <title>React Material Dashboard</title>
+
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/libs/@fortawesome/fontawesome-free/css/all.min.css"><!-- Page CSS -->
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/libs/fullcalendar/dist/fullcalendar.min.css">
+  <!-- Purpose CSS -->
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/purpose.css" id="stylesheet">
 </head>
 
-<body>
+<body class="application application-offset">
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="fb-root"></div>
-  <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-  <div id="root"></div>
+  <div id="root" ></div>
+
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="%PUBLIC_URL%/assets/js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="%PUBLIC_URL%/assets/libs/progressbar.js/dist/progressbar.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/moment/min/moment.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+    <!-- Purpose JS -->
+    <script src="%PUBLIC_URL%/assets/js/purpose.js"></script>
 
 </body>
 

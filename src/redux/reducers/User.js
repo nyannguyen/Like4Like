@@ -1,14 +1,14 @@
-const initState = {
-    avatar: '/static/images/avatars/avatar_6.png',
-    name: 'Nhan Nguyen',
-    wallet: 100,
-    facebook_profile: "https://www.facebook.com/nyan.ntn/"
-}  
+const initState = {}  
 
 const user = (state = initState, action) => {
     switch(action.type) {
         case "INIT":
-            return initState;
+            return {
+                avatar: '/assets/img/theme/light/team-1-800x800.jpg',
+                name: 'Nhan Nguyen',
+                wallet: 100,
+                facebook_profile: "https://www.facebook.com/nyan.ntn/"
+            };
         case "INCREASE_WALLET":
             return {
               ...state,
